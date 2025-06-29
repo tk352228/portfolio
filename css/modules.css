@@ -1,0 +1,13 @@
+.nav-menu {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 32px;
+       column-gap: 32px;
+}
+@media screen and (max-width:599px) {
+  .nav-menu {
+    flex-flow: column;
+    row-gap: 32px;
+  }
+}
+/*# sourceMappingURL=modules.css.map */

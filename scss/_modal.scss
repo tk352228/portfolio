@@ -1,0 +1,45 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    &-overlay{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba($color: $baseColor2, $alpha: .15);
+    }
+    &-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 320px;
+        width: 300px;border-radius: 6px;
+        background-color: $baseColor1;
+        color: $baseColor4;
+        font-size: 24px;
+        border: 5px solid $baseColor4;
+        padding-top: 40px;
+
+        box-shadow: opx 2px 3px rgba($color: #FFF,$alpha: .3);
+        .fa-xmark{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            color: $baseColor4;
+            font-size: 16px;
+        }
+    }
+    .nav{
+        &-menu{
+            margin-bottom: 48px;
+        }        
+    }
+}

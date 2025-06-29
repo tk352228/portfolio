@@ -1,0 +1,56 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+body{
+    font-family: $sans, $sansJp, serif;
+}
+
+
+h3{
+    font-size: 24px;
+    @include mq(sp){
+        font-size: 20px;
+    }
+
+}
+
+p {
+    font-size: 16px; /* 文字のサイズを16pxに設定 */
+    line-height: 1.5; /* 行間を文字のサイズの1.5倍に設定 */
+    color: $textColor2;
+    @include mq(sp){
+        font-size: 14px;
+    }
+}
+
+.section{
+    padding-top: 96px;
+    padding-bottom: 184px;
+    @include mq(sp){
+        padding-top: 96px;
+    padding-bottom: 96px;
+    }
+    &-head__en{
+        font-size: 56px;
+        @include mq(sp){
+            font-size: 32px;
+        }
+    }
+}
+
+.section-head__en{
+    padding-bottom: 64px;
+    color: $textColor1;
+}
+
+.container{
+    margin: 0 220px;
+    @include mq(sp){
+        margin: 0 24px;
+    }
+}

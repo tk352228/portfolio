@@ -1,0 +1,235 @@
+@use 'header' as *;
+@use 'variables' as *;
+@use 'common' as *;
+@use 'mixin' as *;
+@use 'modal' as *;
+@use 'modules' as *;
+@use 'cjm' as *;
+
+
+// ヒーローエリアのスタイル
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $textColor2;
+    width: 100%;
+    height: 100dvh;
+    @include mq(sp){
+        .pc-none{
+            display: none;
+            @include mq(sp){
+                display: block;
+            }
+        }
+    }
+}
+
+
+
+.hero h1 {
+    font-size: 10rem;
+    @include mq(sp){
+        font-size: 40px;
+    }
+}
+
+// CONCEPTのスタイル
+.concept{
+    background-color: $baseColor2;
+    &-container{
+        display: flex;
+        flex-direction: column;
+        row-gap: 80px;
+        @include mq(sp){
+            row-gap: 40px;
+        }
+        .concept-first{
+            .section-head__ja{
+                font-size: 24px;
+                color: $textColor2;
+                padding-bottom: 24px;
+                @include mq(sp){
+                    font-size: 20px;
+                }
+            }
+        }
+        .concept-second{
+            display: flex;
+            column-gap: 16px;
+            @include mq(sp){
+                flex-direction: column;
+                row-gap: 24px;
+            }
+            .concept-cjm {
+                width: calc((100% - 16px) / 2);
+                @include mq(sp){
+                    width: 100%;
+                }
+                &__img{
+                    width: 100%;               
+                    height: auto;
+                }
+            }
+            .concept-cjm-text{
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-end;
+                width: calc((100% - 16px) / 2);
+                @include mq(sp){
+                    width: 100%;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+
+// WORKSのスタイル
+
+// 見出しの位置調整
+.works{
+    .section-head{
+        display: flex;
+        // "製作実績"などを足すなら記載
+        // flex-direction: column; 
+        justify-content: center;
+    }
+    // コンテンツを横に2つ並べて配置。間は16px
+    &-items{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        @include mq(sp){
+            flex-direction: column;
+            row-gap: 64px;
+        }
+        .works-item{
+            width: calc((100% - 16px) / 2);
+            @include mq(sp){
+                width: 100%;
+            }
+            &__img{
+                width: 100%;               
+                height: auto;
+            }
+            // サムネイルの外枠表示
+            .thumbnail-flame{
+                border: 1px solid $baseColor3;
+
+            }
+            &__title{
+                text-align: center;
+                font-size: 18px;
+                padding-top: 32px;
+                @include mq(sp){
+                    padding-top: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+// ABOUT
+.about{
+    background-color: $baseColor2;
+}
+// ３つのアイテムを横に並べる
+.service-headings{
+    display: flex;
+    column-gap: 16px;
+    @include mq(sp){
+        column-gap: 8px;
+        width: calc(100% + 24px);
+        overflow-x: scroll;  // 横スクロールを有効にする
+        scroll-snap-type: x mandatory;  // スクロールスナップを有効にする（任意）
+    }
+
+    // アイテムの幅を決める
+    .service-heading{
+        background-color: $baseColor1;
+        width: calc(100% / 3);
+        border: 3px solid $textColor2;
+        padding: 32px 40px;
+        @include mq(sp){
+            flex-shrink: 0;
+            width: 58vw;
+            padding: 16px 24px;
+        }
+        &__title{
+            padding-bottom: 16px;
+            p{
+                line-height: 1.5;
+            }
+        }
+        .location{
+            padding-top: 40px;
+            padding-bottom: 16px;
+        }
+        &__text{
+            padding-bottom: 16px;
+        }
+        .service-tools{            
+            display: flex;
+            flex-direction: column;
+            row-gap: 8px;
+            list-style: none; /* デフォルトの箇条書きマークを消す */
+            position: relative;
+            li{
+                position: relative;
+                padding-left: 16px;
+            
+                &::before {
+                    content: "・"; /* 中黒を表示 */
+                    position: absolute;
+                    left: 0; /* 必要に応じて位置を調整 */
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+// contact
+.contact p{
+    text-align: center;
+    padding-bottom: 48px;
+}
+
+.contact{
+    .section-head{
+        display: flex;
+        // "お問い合わせ"などを足すなら記載
+        // flex-direction: column; 
+        justify-content: center;
+    }
+}
+
+.contact-icon{
+    display: flex;
+    justify-content: center;
+    column-gap: 64px;
+    .fa-x-twitter,
+    .fa-envelope {
+    font-size: 32px;
+    }
+}
+
+// コピーライト
+.copyRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4.8px;
+    background-color: $textColor1;
+    width: 100%;
+    height: 120px;
+    .copyRight-text,.fa-copyright{
+        color: $textColor3;
+    }
+}
+
