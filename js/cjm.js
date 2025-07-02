@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // 画像クリックでモーダル表示
-    document.querySelectorAll(".concept-cjm__img").forEach((img) => {
-    img.addEventListener("click", () => {
-        modalImg.src = img.src;
-        cjmModal.classList.add("open");
+    document.querySelectorAll(".concept-cjm__img, .concept-media__img").forEach((img) => {
+        img.addEventListener("click", () => {
+            modalImg.src = img.src;
+            cjmModal.classList.add("open");
+        });
     });
-    });
-
+    
     // モーダルを閉じる
     cjmModal.querySelector(".cjm-modal-close").addEventListener("click", closeModal);
     cjmModal.addEventListener("click", (e) => {

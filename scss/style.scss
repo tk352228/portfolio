@@ -75,10 +75,23 @@
             .concept-cjm-text{
                 display: flex;
                 justify-content: flex-start;
-                align-items: flex-end;
+                align-items: center;
                 width: calc((100% - 16px) / 2);
                 @include mq(sp){
                     width: 100%;
+                }
+            }
+        }
+        .concept-third{
+            display: flex;
+            align-items: center; /* 上下中央に配置 */
+            column-gap: 16px;
+            .concept-media{
+                width: calc((100% - 16px) / 2);
+                border: 1px solid $textColor2;
+                .concept-media__img {
+                    width: 100%;
+                    height: auto; /* アスペクト比を保つ */
                 }
             }
         }
@@ -100,6 +113,7 @@
     }
     // コンテンツを横に2つ並べて配置。間は16px
     &-items{
+        padding-bottom: 80px;
         display: flex;
         flex-wrap: wrap;
         column-gap: 16px;
@@ -112,24 +126,235 @@
             @include mq(sp){
                 width: 100%;
             }
+
             &__img{
                 width: 100%;               
                 height: auto;
+                
             }
-            // サムネイルの外枠表示
-            .thumbnail-flame{
-                border: 1px solid $baseColor3;
 
-            }
             &__title{
                 text-align: center;
-                font-size: 18px;
-                padding-top: 32px;
-                @include mq(sp){
-                    padding-top: 16px;
+            }
+            // サムネイルの外枠表示
+            .thumbnail-flame {
+                margin-bottom: 16px;
+                border: 1px solid $baseColor3;
+                overflow: hidden;                  // ← 追加: 枠からはみ出さない
+            // 画像の変形をスムーズに
+                .works-item__img {
+                    display: block;                  // ← 追加: 余白防止
+                    width: 100%;               
+                    height: auto;
+                    transition: transform 0.3s ease; // ← 追加: アニメーション設定
+                    transform-origin: center center;
                 }
+                &:hover .works-item__img {        // ← 追加: ホバー時の拡大
+                    transform: scale(1.05);
+                }
+            }        
+        }
+    }
+}
+
+
+.works-shortVideos {
+    display: flex;
+    gap: 40px;               /* 子要素間の余白 */
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding-bottom: 80px;
+}
+
+/* スマホ枠(これでvimeoのアイコン・名前・タイトルが見えなくなる) */
+.works-shortVideo {
+    position: relative;
+    flex: 1 1 calc((100% - 3*40px)/4); /* 4つ並べる場合の幅計算 */
+    max-width: 250px;                   /* 好きな幅に調整 */
+    background: #000;                   /* 通常スマホ画面は黒背景 */
+    border: 12px solid #ffffff;            /* 枠の太さと色 */
+    border-radius: 40px;                /* 角丸 */
+    // box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow:
+        /* 上方向のシャドウ */
+        0 -4px 10px rgba(0, 0, 0, 0.05),
+        /* 下方向のシャドウ */
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        /* より深い下影 */
+        0 8px 15px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;                   /* はみ出し隠す */
+}
+
+// /* スピーカーの切り欠き */
+// .works-shortVideo::before {
+//     content: "";
+//     position: absolute;
+//     top: 12px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     width: 60px;
+//     height: 4px;
+//     background: #ccc;
+//     border-radius: 2px;
+// }
+
+/* インカメラ穴 */
+.works-shortVideo::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+}
+
+/* アスペクト比を保つラッパー */
+.video-wrapper {
+    position: relative;
+    padding-top: 177.78%; /* 9:16 の縦長比率 */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+// SNS運用サポート
+.sns-supports{
+    display: flex;
+    column-gap: 40px;
+    
+
+
+    .sns-support{
+        width: calc((100% - 80px) / 3);
+        border-radius: 10px;
+        border: 1px solid #000;  /* 幅1px・実線・黒 */
+        background-color: $baseColor2;
+        padding: 16px;
+        &__img{
+            width: 100%;               
+            height: auto;            
+        }
+        .thumbnail-flame {
+                margin-bottom: 16px;
+                border: 3px solid $baseColor3;
+                border-radius: 10px;
+                width: 100%;
+                aspect-ratio: 16 / 14;  /* 横16:縦9 の比率を維持 */
+                overflow: hidden;
+                                  // ← 追加: 枠からはみ出さない
+            // 画像の変形をスムーズに
+                .sns-support__img {
+                    display: block;                  // ← 追加: 余白防止
+                    width: 100%;               
+                    height: auto;
+                    // transition: transform 0.3s ease; // ← 追加: アニメーション設定
+                    // transform-origin: center center;
+                }
+                // &:hover .sns-support__img {        // ← 追加: ホバー時の拡大
+                //     transform: scale(1.05);
+                // }
+        }
+        &__title{
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        &__text{
+            font-size: 20px;
+        }
+
+        // テスト
+    &__btn {
+        display: inline-block;
+        color: #FFF;
+        background-color: #FE2C55;
+        text-align: center;
+        width: 178px;
+        height: 32px;
+        line-height: 27px;          /* テキストを縦中央 */
+        border: none;
+        border-radius: 8px;
+        margin: 16px 64px 30px 64px;
+        cursor: pointer;
+
+        /* スムーズな切り替え */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        /* デフォルトの影（ほんのり浮いてる感じ） */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+        /* 拡大＋影強調で浮き上がり感 */
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        &:active {
+        /* クリック中は少し戻した状態 */
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+    }
+    &__link {
+        color: $textColor1;          /* お好みの色に変更 */
+        text-decoration: underline;
+        transition: color 0.2s ease;
+
+        &:hover {
+        color: darken( $textColor1, 10%);  /* ホバー時に色を少し濃く */
+        }
+    }
+    &__linkText{
+        font-size: 20px;
+        padding-top: 24px;
+    }
+
+
+
+// QRコードのリンクタグ
+        .note-qr {
+            display: block;
+            width: 90px;
+            height: 90px;
+            margin: 16px auto 0;
+            overflow: hidden;
+            cursor: pointer;
+
+            /* デフォルトでホバー時と同じ浮き上がり＋シャドウ */
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+
+            /* スムーズな切り替え */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            &:hover {
+                /* ホバーでさらに少し大きく＆シャドウ強め */
+                transform: scale(1.1);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            }
+
+            /* タップやフォーカスにも反応させたい場合 */
+            &:active,
+            &:focus {
+                outline: none;
+                transform: scale(1.08);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.35);
             }
         }
+
+
+            img {
+            display: block;       /* 余白消去 */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;    /* 枠いっぱいに収める */
+            }
     }
 }
 
@@ -218,6 +443,72 @@
     font-size: 32px;
     }
 }
+
+/* CSS */
+// #contact {
+//   background-color: $baseColor1;       /* ページ背景色 */
+//   padding: 60px 20px;             /* 上下左右の余白 */
+// }
+#contact .container {
+    max-width: 600px;
+    margin: 0 auto;                 /* 中央寄せ */
+}
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #2f3a49;
+}
+
+/* フォーム本体を縦方向の Flex コンテナに */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 各フィールドの余白調整 */
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* テキスト入力欄／テキストエリア */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 2px solid #5e5e5e;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: $baseColor2;
+}
+.contact-form textarea {
+    resize: vertical;    /* 縦方向のみリサイズ可 */
+    min-height: 150px;
+}
+
+.contact-form form{
+    display: flex;
+    flex-direction: column; /* 縦並びにする */
+}
+
+/* 送信ボタンを右端に寄せる */
+.contact-form__submit{
+    align-self: flex-end;
+    padding: 12px 30px;
+    background-color: #2f3a49;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.contact-form__submit:hover {
+    background-color: #1f2832;
+}
+
+
 
 // コピーライト
 .copyRight{

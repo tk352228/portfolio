@@ -16,7 +16,14 @@ h3{
     @include mq(sp){
         font-size: 20px;
     }
+}
 
+.title{
+    color: $textColor1;
+}
+
+.works-title{
+    padding-bottom: 32px;
 }
 
 p {
@@ -33,7 +40,7 @@ p {
     padding-bottom: 184px;
     @include mq(sp){
         padding-top: 96px;
-    padding-bottom: 96px;
+        padding-bottom: 96px;
     }
     &-head__en{
         font-size: 56px;

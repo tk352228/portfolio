@@ -84,6 +84,14 @@ h3 {
   }
 }
 
+.title {
+  color: #0526FF;
+}
+
+.works-title {
+  padding-bottom: 32px;
+}
+
 p {
   font-size: 16px; /* 文字のサイズを16pxに設定 */
   line-height: 1.5; /* 行間を文字のサイズの1.5倍に設定 */
@@ -195,11 +203,11 @@ p {
   height: auto;
   -o-object-fit: cover;
      object-fit: cover; /* 親要素のサイズに合わせて表示 */
-  transition: transform 0.6s ease; /* ホバー時のアニメーション */
+  transition: transform 0.3s ease; /* ホバー時のアニメーション */
 }
 
 .concept-cjm__img:hover {
-  transform: scale(1.1); /* 拡大（親要素内で表示） */
+  transform: scale(1.05); /* 拡大（親要素内で表示） */
 }
 
 /* モーダル全体のスタイル */
@@ -211,7 +219,7 @@ p {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8); /* 背景の黒い透過 */
   display: flex;
-  align-items: center;
+  align-items: center; /* 上寄せ */
   justify-content: center;
   z-index: 1000;
   opacity: 0;
@@ -250,6 +258,28 @@ p {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+/* concept-mediaコンテナにも overflow を指定 */
+.concept-media {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ホバー／トランジション設定をコピー */
+.concept-media__img {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.3s ease;
+  transform-origin: transform-origin;
+}
+
+.concept-media__img:hover {
+  transform: scale(1.05);
 }
 
 .hero {
@@ -330,7 +360,7 @@ p {
 .concept-container .concept-second .concept-cjm-text {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
   width: calc((100% - 16px) / 2);
 }
 @media screen and (max-width:599px) {
@@ -338,12 +368,27 @@ p {
     width: 100%;
   }
 }
+.concept-container .concept-third {
+  display: flex;
+  align-items: center; /* 上下中央に配置 */
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+}
+.concept-container .concept-third .concept-media {
+  width: calc((100% - 16px) / 2);
+  border: 1px solid #333333;
+}
+.concept-container .concept-third .concept-media .concept-media__img {
+  width: 100%;
+  height: auto; /* アスペクト比を保つ */
+}
 
 .works .section-head {
   display: flex;
   justify-content: center;
 }
 .works-items {
+  padding-bottom: 80px;
   display: flex;
   flex-wrap: wrap;
   -moz-column-gap: 16px;
@@ -367,18 +412,176 @@ p {
   width: 100%;
   height: auto;
 }
-.works-items .works-item .thumbnail-flame {
-  border: 1px solid #C2C2C2;
-}
 .works-items .works-item__title {
   text-align: center;
-  font-size: 18px;
-  padding-top: 32px;
 }
-@media screen and (max-width:599px) {
-  .works-items .works-item__title {
-    padding-top: 16px;
-  }
+.works-items .works-item .thumbnail-flame {
+  margin-bottom: 16px;
+  border: 1px solid #C2C2C2;
+  overflow: hidden;
+}
+.works-items .works-item .thumbnail-flame .works-item__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+.works-items .works-item .thumbnail-flame:hover .works-item__img {
+  transform: scale(1.05);
+}
+
+.works-shortVideos {
+  display: flex;
+  gap: 40px; /* 子要素間の余白 */
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding-bottom: 80px;
+}
+
+/* スマホ枠(これでvimeoのアイコン・名前・タイトルが見えなくなる) */
+.works-shortVideo {
+  position: relative;
+  flex: 1 1 calc((100% - 120px) / 4); /* 4つ並べる場合の幅計算 */
+  max-width: 250px; /* 好きな幅に調整 */
+  background: #000; /* 通常スマホ画面は黒背景 */
+  border: 12px solid #ffffff; /* 枠の太さと色 */
+  border-radius: 40px; /* 角丸 */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden; /* はみ出し隠す */
+}
+
+/* インカメラ穴 */
+.works-shortVideo::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+/* アスペクト比を保つラッパー */
+.video-wrapper {
+  position: relative;
+  padding-top: 177.78%; /* 9:16 の縦長比率 */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sns-supports {
+  display: flex;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+.sns-supports .sns-support {
+  width: calc((100% - 80px) / 3);
+  border-radius: 10px;
+  border: 1px solid #000; /* 幅1px・実線・黒 */
+  background-color: #F7F7F7;
+  padding: 16px;
+}
+.sns-supports .sns-support__img {
+  width: 100%;
+  height: auto;
+}
+.sns-supports .sns-support .thumbnail-flame {
+  margin-bottom: 16px;
+  border: 3px solid #C2C2C2;
+  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 16/14; /* 横16:縦9 の比率を維持 */
+  overflow: hidden;
+}
+.sns-supports .sns-support .thumbnail-flame .sns-support__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sns-supports .sns-support__title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.sns-supports .sns-support__text {
+  font-size: 20px;
+}
+.sns-supports .sns-support__btn {
+  display: inline-block;
+  color: #FFF;
+  background-color: #FE2C55;
+  text-align: center;
+  width: 178px;
+  height: 32px;
+  line-height: 27px; /* テキストを縦中央 */
+  border: none;
+  border-radius: 8px;
+  margin: 16px 64px 30px 64px;
+  cursor: pointer;
+  /* スムーズな切り替え */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* デフォルトの影（ほんのり浮いてる感じ） */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.sns-supports .sns-support__btn:hover {
+  /* 拡大＋影強調で浮き上がり感 */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.sns-supports .sns-support__btn:active {
+  /* クリック中は少し戻した状態 */
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.sns-supports .sns-support__link {
+  color: #0526FF; /* お好みの色に変更 */
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+.sns-supports .sns-support__link:hover {
+  color: #001cd1; /* ホバー時に色を少し濃く */
+}
+.sns-supports .sns-support__linkText {
+  font-size: 20px;
+  padding-top: 24px;
+}
+.sns-supports .sns-support .note-qr {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: 16px auto 0;
+  overflow: hidden;
+  cursor: pointer;
+  /* デフォルトでホバー時と同じ浮き上がり＋シャドウ */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  /* スムーズな切り替え */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* タップやフォーカスにも反応させたい場合 */
+}
+.sns-supports .sns-support .note-qr:hover {
+  /* ホバーでさらに少し大きく＆シャドウ強め */
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.sns-supports .sns-support .note-qr:active, .sns-supports .sns-support .note-qr:focus {
+  outline: none;
+  transform: scale(1.08);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+}
+.sns-supports .sns-support img {
+  display: block; /* 余白消去 */
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover; /* 枠いっぱいに収める */
 }
 
 .about {
@@ -462,6 +665,69 @@ p {
 .contact-icon .fa-x-twitter,
 .contact-icon .fa-envelope {
   font-size: 32px;
+}
+
+/* CSS */
+#contact .container {
+  max-width: 600px;
+  margin: 0 auto; /* 中央寄せ */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #2f3a49;
+}
+
+/* フォーム本体を縦方向の Flex コンテナに */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 各フィールドの余白調整 */
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+/* テキスト入力欄／テキストエリア */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 2px solid #5e5e5e;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #F7F7F7;
+}
+
+.contact-form textarea {
+  resize: vertical; /* 縦方向のみリサイズ可 */
+  min-height: 150px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+}
+
+/* 送信ボタンを右端に寄せる */
+.contact-form__submit {
+  align-self: flex-end;
+  padding: 12px 30px;
+  background-color: #2f3a49;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form__submit:hover {
+  background-color: #1f2832;
 }
 
 .copyRight {

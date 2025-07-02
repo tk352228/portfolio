@@ -10,11 +10,11 @@
     width: 100%;
     height: auto;
     object-fit: cover; /* 親要素のサイズに合わせて表示 */
-    transition: transform 0.6s ease; /* ホバー時のアニメーション */
+    transition: transform 0.3s ease; /* ホバー時のアニメーション */
 }
 
 .concept-cjm__img:hover {
-    transform: scale(1.1); /* 拡大（親要素内で表示） */
+    transform: scale(1.05); /* 拡大（親要素内で表示） */
 }
 
   /* モーダル全体のスタイル */
@@ -26,7 +26,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8); /* 背景の黒い透過 */
     display: flex;
-    align-items: center;
+    align-items: center;    /* 上寄せ */
     justify-content: center;
     z-index: 1000;
     opacity: 0;
@@ -64,4 +64,27 @@
     background: none;
     border: none;
     cursor: pointer;
+}
+
+
+
+/* concept-mediaコンテナにも overflow を指定 */
+.concept-media {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ホバー／トランジション設定をコピー */
+.concept-media__img {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    transform-origin: transform-origin;
+}
+
+.concept-media__img:hover {
+    transform: scale(1.05);
 }
