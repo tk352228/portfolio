@@ -328,10 +328,18 @@
                 </form>
             </div>
 
+            <!-- スクリプトは head に置く場合も defer / DOMContentLoaded で確実に -->
             <script>
-                document.getElementById('contactForm').addEventListener('submit', async e => {
+                document.addEventListener('DOMContentLoaded', () => {
+                const form = document.getElementById('contactForm');
+                if (!form) {
+                    console.error('contactForm が見つかりません');
+                    return;
+                }
+                form.addEventListener('submit', async e => {
                     e.preventDefault();
-                    const form = e.target;
+                    console.log('submit intercepted');
+
                     const payload = {
                     name:    form.name.value.trim(),
                     email:   form.email.value.trim(),
@@ -339,22 +347,22 @@
                     };
 
                     try {
-                    const res = await fetch('https://script.google.com/macros/s/1tAiAIbVv8diRlS31dlJDxnwSCcs99bGiGuryuMmoVUQxZ4y0HIq7HFK6/exec', {
+                    await fetch(
+                        'https://script.google.com/macros/s/1tAiAIbVv8diRlS31dlJDxnwSCcs99bGiGuryuMmoVUQxZ4y0HIq7HFK6/exec',
+                        {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const json = await res.json();
-                    if (json.status === 'success') {
-                        alert('送信が完了しました！');
-                        form.reset();
-                    } else {
-                        throw new Error(json.message || '送信に失敗しました');
-                    }
+                        mode:   'no-cors',                // ← CORS をバイパス
+                        headers: { 'Content-Type': 'text/plain' },
+                        body:    JSON.stringify(payload)
+                        }
+                    );
+                    alert('送信が完了しました！');
+                    form.reset();
                     } catch (err) {
                     console.error(err);
-                    alert('エラーが発生しました: ' + err.message);
+                    alert('エラーが発生しました');
                     }
+                });
                 });
             </script>
 
