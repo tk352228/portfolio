@@ -308,14 +308,55 @@
             <p class="contact-text">ご相談やお見積りは無料ですので、お気軽にお問い合わせください。<br>24時間以内にご返信させて頂きます。</p>
             
             <!-- コンタクトフォーム -->
-            <div class="contact-form">
+            <!-- <div class="contact-form">
                 <form action="#" method="post">
                     <input type="text" name="name" placeholder="お名前" required>
                     <input type="email" name="email" placeholder="メールアドレス" required>
                     <textarea name="message" rows="5" placeholder="お問い合わせ内容" required></textarea>
                     <button type="submit" class="contact-form__submit">送信</button>
                 </form>
+            </div> -->
+
+            <!-- スプレッドシート→LINE通知 -->
+            <div class="contact-form">
+            <!-- ① form に id="contactForm" を追加 -->
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="お名前" required>
+                    <input type="email" name="email" placeholder="メールアドレス" required>
+                    <textarea name="message" rows="5" placeholder="お問い合わせ内容" required></textarea>
+                    <button type="submit" class="contact-form__submit">送信</button>
+                </form>
             </div>
+
+            <script>
+                document.getElementById('contactForm').addEventListener('submit', async e => {
+                    e.preventDefault();
+                    const form = e.target;
+                    const payload = {
+                    name:    form.name.value.trim(),
+                    email:   form.email.value.trim(),
+                    message: form.message.value.trim()
+                    };
+
+                    try {
+                    const res = await fetch('https://script.google.com/macros/s/1tAiAIbVv8diRlS31dlJDxnwSCcs99bGiGuryuMmoVUQxZ4y0HIq7HFK6/exec', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const json = await res.json();
+                    if (json.status === 'success') {
+                        alert('送信が完了しました！');
+                        form.reset();
+                    } else {
+                        throw new Error(json.message || '送信に失敗しました');
+                    }
+                    } catch (err) {
+                    console.error(err);
+                    alert('エラーが発生しました: ' + err.message);
+                    }
+                });
+            </script>
 
             <!-- エックスのアイコン -->
             <!-- <div class="contact-icon">

@@ -656,17 +656,6 @@ p {
   justify-content: center;
 }
 
-.contact-icon {
-  display: flex;
-  justify-content: center;
-  -moz-column-gap: 64px;
-       column-gap: 64px;
-}
-.contact-icon .fa-x-twitter,
-.contact-icon .fa-envelope {
-  font-size: 32px;
-}
-
 /* CSS */
 #contact .container {
   max-width: 600px;
