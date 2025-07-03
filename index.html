@@ -329,43 +329,37 @@
             </div>
 
             <!-- スクリプトは head に置く場合も defer / DOMContentLoaded で確実に -->
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                const form = document.getElementById('contactForm');
-                if (!form) {
-                    console.error('contactForm が見つかりません');
-                    return;
-                }
-                form.addEventListener('submit', async e => {
-                    e.preventDefault();
-                    console.log('submit intercepted');
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> {
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
 
-                    const payload = {
-                    name:    form.name.value.trim(),
-                    email:   form.email.value.trim(),
-                    message: form.message.value.trim()
-                    };
+            // クエリ文字列を組み立て
+            const params = new URLSearchParams({
+            callback: 'contactCB',
+            name:     form.name.value.trim(),
+            email:    form.email.value.trim(),
+            message:  form.message.value.trim()
+            });
 
-                    try {
-                    await fetch(
-                        'https://script.google.com/macros/s/1tAiAIbVv8diRlS31dlJDxnwSCcs99bGiGuryuMmoVUQxZ4y0HIq7HFK6/exec',
-                        {
-                        method: 'POST',
-                        mode:   'no-cors',                // ← CORS をバイパス
-                        headers: { 'Content-Type': 'text/plain' },
-                        body:    JSON.stringify(payload)
-                        }
-                    );
-                    alert('送信が完了しました！');
-                    form.reset();
-                    } catch (err) {
-                    console.error(err);
-                    alert('エラーが発生しました');
-                    }
-                });
-                });
-            </script>
+            // <script> を動的に挿入して JSONP 呼び出し
+            const s = document.createElement('script');
+            s.src = 'https://script.google.com/macros/s/1bD3dH1d0lutxQ5Fktu51oZ0nnsXaQl_0hoCPAKw6V9I/exec?' + params;
+            document.body.appendChild(s);
+        });
+        });
 
+        // JSONP用コールバック
+        function contactCB(res) {
+        if (res.status === 'success') {
+            alert('送信が完了しました！');
+            document.getElementById('contactForm').reset();
+        } else {
+            alert('エラー: ' + res.message);
+        }
+        }
+    </script>
             <!-- エックスのアイコン -->
             <!-- <div class="contact-icon">
                 <a href="https://x.com/masakazu_h2336"><i class="fa-brands fa-x-twitter"></i></a>
