@@ -83,8 +83,7 @@
     <!-- ヘッダー（ロゴとメニュー） -->
     <header class="header">
         <a href="index.html" class="logo">
-            <span>M</span><br>
-            <span>H</span>
+            <div class="donut-logo"></div>
         </a>
         <nav class="nav">
             <ul class="nav-menu">
@@ -120,24 +119,26 @@
                 <div class="section-head">
                     <h2 class="section-head__en">CONCEPT</h2>
                     <h2 class="section-head__ja">ただきれいなサイトを作るだけでは、誰も見てくれません。</h2>
-                    <p class="concept-text">丁寧なヒアリングをもとに、目的に合わせてデザインされたサイトを構築しています。<br>SNS運用も組み合わせたトータルサポートで成果を目指します。</p>
+                    <!-- <p class="concept-text">丁寧なヒアリングをもとに、目的に合わせてデザインされたサイトを構築しています。<br>SNS運用も組み合わせたトータルサポートで成果を目指します。</p> -->
                 </div>
             </div>
-            <div class="concept-second">
+            <h3 class="concept-title">〇カスタマージャーニーマップ</h3>
+            <div class="concept-second">                
                 <div class="concept-cjm">
                     <img src="img/img01.png" alt="カスタマージャーニーマップ" class="concept-cjm__img">
                 </div>
                 <div class="concept-cjm-text">
-                    <p class="concept-text">丁寧なヒアリングを行い、<br>カスタマージャーニーマップを作成。<br>それに基づいてサイトを構築していきます。<br>※表は整体院WEBページのもの</p>
+                    <p class="concept-text">丁寧なヒアリングを行い、<br>カスタマージャーニーマップを作成。<br>それに基づいてサイトを構築していきます。</p>
                 </div>
             </div>
+            <h3 class="concept-title">〇分析ツール</h3>
             <div class="concept-third">
                 <div class="concept-media">
                     <!-- <img src="img/img04.png" alt="ショート動画編集" class="concept-media__img"> -->
-                    <img src="img/img05.png" alt="アナリティクス分析" class="concept-media__img">
+                    <img src="img/img05.png" alt="分析ツール" class="concept-media__img">
                 </div>
                 <p class="concept-text">
-                    ショート動画で認知を広げ、サイトへの流入を促進。<br>
+                    SNS運用で認知を広げ、サイトへの流入を促進。<br>
                     分析ツールを用いて改善・運用を行います。
                 </p>
             </div>
@@ -233,7 +234,7 @@
                         <img src="./img/img06.jpg" alt="TikTokアカウント画像" class="sns-support__img">
                     </div>
                     <p class="sns-support__title">TikTok</p>
-                    <p class="sns-support__text">ショート動画制作だけでなく、<br>運用のサポートも行っています。</p>
+                    <p class="sns-support__text">ショート動画制作だけでなく<br class="sp-none">運用のサポートも行っています。</p>
                     <p class="sns-support__linkText">アカウントは<a href="https://www.tiktok.com/@healthpro.p " class="sns-support__link">こちら</a>です。</p>                         
                     <a href="https://www.tiktok.com/@healthpro.p">
                         <button class="sns-support__btn">トレーニング整体院</button>
@@ -245,7 +246,7 @@
                         <img src="./img/img07.png" alt="Xポスト画像" class="sns-support__img">
                     </div>
                     <p class="sns-support__title">X(旧Twitter)</p>
-                    <p class="sns-support__text">オンラインゲーム仲間の募集を<br>サポートしました。<br>結果のnoteが<a href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="sns-support__link">こちら</a>です。</p>
+                    <p class="sns-support__text">オンラインゲーム仲間の募集を<br class="sp-none">サポートしました。<br>結果のnoteが<a href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="sns-support__link">こちら</a>です。</p>
                     <a href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="note-qr">
                         <img src="./img/img08.png" alt="NoteのQRコード" >
                     </a>
@@ -305,7 +306,7 @@
             <div class="section-head">
                 <h2 class="section-head__en">CONTACT</h2>
             </div>
-            <p class="contact-text">ご相談やお見積りは無料ですので、お気軽にお問い合わせください。<br>24時間以内にご返信いたします。</p>
+            <p class="contact-text">ご相談やお見積りは無料ですので、<br class="pc-none">お気軽にお問い合わせください。<br>24時間以内にご返信いたします。</p>
             
 
             <!-- スプレッドシート→LINE通知 -->
@@ -329,43 +330,6 @@
     </div>
 
 
-        <!-- <script>
-        // ページ末尾にあるので DOMContentLoaded なしで OK
-        const form = document.getElementById('contactForm');
-        if (!form) {
-            console.error('contactForm が見つかりません');
-        } else {
-            form.addEventListener('submit', e => {
-            e.preventDefault();
-
-            // JSONP用の callback 関数名
-            const callbackName = 'contactCB';
-            const params = new URLSearchParams({
-                callback: callbackName,
-                name:     form.name.value.trim(),
-                email:    form.email.value.trim(),
-                message:  form.message.value.trim()
-            });
-
-            // ※ ここを「スプレッドシートID」→「Apps Script のデプロイID」に戻す！
-            const deployId = 'AKfycbxPK1wXqg64er5aAAugo4FR2cKpbgSRHCi3ZN4La6YmopMuJgtRwJGBsa_J6tzqekb_';
-            const s = document.createElement('script');
-            s.src = `https://script.google.com/macros/s/${deployId}/exec?${params}`;
-            document.body.appendChild(s);
-            });
-        } -->
-
-        <!-- // JSONP 用コールバック
-        function contactCB(res) {
-            console.log('contactCB:', res);
-            if (res.status === 'success') {
-            alert('送信が完了しました！');
-            form.reset();
-            } else {
-            alert('エラー: ' + res.message);
-            }
-        } -->
-    <!-- </script> -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

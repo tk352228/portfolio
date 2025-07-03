@@ -38,13 +38,17 @@
 // CONCEPTのスタイル
 .concept{
     background-color: $baseColor2;
+
+    &-title{
+        font-size: 18px;
+        color: $textColor1;
+        row-gap: 8px;
+    }
     &-container{
         display: flex;
         flex-direction: column;
-        row-gap: 80px;
-        @include mq(sp){
-            row-gap: 40px;
-        }
+        // row-gap: 80px;
+        
         .concept-first{
             .section-head__ja{
                 font-size: 24px;
@@ -58,27 +62,39 @@
         .concept-second{
             display: flex;
             column-gap: 16px;
+            margin-bottom: 40px;
             @include mq(sp){
                 flex-direction: column;
-                row-gap: 24px;
+                row-gap: 0px;
+                margin-bottom: 24px;
             }
             .concept-cjm {
+                display: flex;
                 width: calc((100% - 16px) / 2);
                 @include mq(sp){
                     width: 100%;
+                    flex-direction: column;   // ←ここで縦積みに
+                    row-gap: 24px;            // ←これで上下に隙間を作るのもあり
                 }
                 &__img{
                     width: 100%;               
                     height: auto;
+                    margin-bottom: 32px;
+                    @include mq(sp){
+                        margin-bottom: 0;
+                    }
                 }
             }
             .concept-cjm-text{
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+                
                 width: calc((100% - 16px) / 2);
                 @include mq(sp){
+                    display: block;
                     width: 100%;
+                    
                 }
             }
         }
@@ -86,9 +102,17 @@
             display: flex;
             align-items: center; /* 上下中央に配置 */
             column-gap: 16px;
+            @include mq(sp){
+                flex-direction: column;
+                row-gap: 8px;
+            }
             .concept-media{
                 width: calc((100% - 16px) / 2);
                 border: 1px solid $textColor2;
+                @include mq(sp){
+                    width: 100%;
+                    height: auto;
+                }
                 .concept-media__img {
                     width: 100%;
                     height: auto; /* アスペクト比を保つ */
@@ -97,8 +121,8 @@
         }
         
     }
-    
-}
+}    
+
 
 
 // WORKSのスタイル
@@ -164,6 +188,12 @@
     justify-content: space-between;
     flex-wrap: nowrap;
     padding-bottom: 80px;
+    @include mq(sp){
+        flex-direction: column;
+        row-gap: 32px;
+        align-items: center;
+        
+    }
 }
 
 /* スマホ枠(これでvimeoのアイコン・名前・タイトルが見えなくなる) */
@@ -183,20 +213,18 @@
         /* より深い下影 */
         0 8px 15px rgba(0, 0, 0, 0.15); 
     overflow: hidden;                   /* はみ出し隠す */
+    @include mq(sp){
+            /* デスクトップ用 flex:1 を無効化 */
+        flex: none;
+        /* 好きな固定幅 or %幅 を指定 */
+        width: 250px;
+        /* もし可変幅にしたいなら下記のように */
+        /* width: calc(100% - 40px); max-width: 300px; */
+        /* margin-auto でもセンターできます */
+        margin: 0 auto;
+    }
 }
 
-// /* スピーカーの切り欠き */
-// .works-shortVideo::before {
-//     content: "";
-//     position: absolute;
-//     top: 12px;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     width: 60px;
-//     height: 4px;
-//     background: #ccc;
-//     border-radius: 2px;
-// }
 
 /* インカメラ穴 */
 .works-shortVideo::after {
@@ -228,15 +256,21 @@
 .sns-supports{
     display: flex;
     column-gap: 40px;
+    @include mq(sp){
+        flex-direction: column;
+        align-items: center;
+        row-gap: 32px;
+    }
     
-
-
     .sns-support{
         width: calc((100% - 80px) / 3);
         border-radius: 10px;
         border: 1px solid #000;  /* 幅1px・実線・黒 */
         background-color: $baseColor2;
         padding: 16px;
+        @include mq(sp){
+            width: 255px;
+        }
         &__img{
             width: 100%;               
             height: auto;            
@@ -254,24 +288,25 @@
                     display: block;                  // ← 追加: 余白防止
                     width: 100%;               
                     height: auto;
-                    // transition: transform 0.3s ease; // ← 追加: アニメーション設定
-                    // transform-origin: center center;
                 }
-                // &:hover .sns-support__img {        // ← 追加: ホバー時の拡大
-                //     transform: scale(1.05);
-                // }
         }
         &__title{
             text-align: center;
             margin-bottom: 32px;
+            @include mq(sp){
+                margin-bottom: 24px;
+            }
         }
         &__text{
             font-size: 20px;
+            @include mq(sp){
+                font-size: 16px;
+            }
         }
 
         // テスト
     &__btn {
-        display: inline-block;
+        display: block;
         color: #FFF;
         background-color: #FE2C55;
         text-align: center;
@@ -280,7 +315,12 @@
         line-height: 27px;          /* テキストを縦中央 */
         border: none;
         border-radius: 8px;
-        margin: 16px 64px 30px 64px;
+        margin: 16px auto 30px auto;
+        @include mq(sp) {
+            display: block;               // ← ここを追加
+            margin: 16px auto 16px auto;  // 上16px・左右 auto・下30px
+
+        }
         cursor: pointer;
 
         /* スムーズな切り替え */
@@ -313,9 +353,11 @@
     &__linkText{
         font-size: 20px;
         padding-top: 24px;
+        @include mq(sp){
+                font-size: 16px;
+                padding-top: 0;
+            }
     }
-
-
 
 // QRコードのリンクタグ
         .note-qr {
@@ -325,6 +367,10 @@
             margin: 16px auto 0;
             overflow: hidden;
             cursor: pointer;
+            @include mq(sp){
+                width: 60px;
+                height: 60px;
+            }
 
             /* デフォルトでホバー時と同じ浮き上がり＋シャドウ */
             transform: scale(1.05);
