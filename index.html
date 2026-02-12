@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Portfolio</title>
+    <title>まさかずデザイン製作所ポートフォリオ</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LTG9J9XBD"></script>
@@ -43,25 +44,33 @@
     <!-- Noto Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Noto Sans Japanese -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Noto Serif Japanese -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 
     <!-- fontawesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!-- リセットCSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
-<!-- モーダル -->
+    <!-- モーダル -->
     <div class="modal">
         <div class="modal-overlay">
             <div class="modal-container">
@@ -72,9 +81,10 @@
                         <li class="nav-menu__link"><a href="#works">WORKS</a></li>
                         <li class="nav-menu__link"><a href="#about">ABOUT</a></li>
                         <li class="nav-menu__link"><a href="#contact">CONTACT</a></li>
-                        <li class="nav-menu__link"><a href="https://x.com/masakazu_h2336"><i class="fa-brands fa-x-twitter"></i></a></li>
+                        <li class="nav-menu__link"><a href="https://x.com/masakazu_h2336"><i
+                                    class="fa-brands fa-x-twitter"></i></a></li>
                     </ul>
-                </nav>       
+                </nav>
             </div>
         </div>
     </div>
@@ -83,7 +93,7 @@
     <!-- ヘッダー（ロゴとメニュー） -->
     <header class="header">
         <a href="index.html" class="logo">
-            <div class="donut-logo"></div>
+            <img class="site-logo" src="img/rogo-gray.png" alt="まさかずデザイン製作所　ロゴ">
         </a>
         <nav class="nav">
             <ul class="nav-menu">
@@ -91,8 +101,9 @@
                 <li class="nav-menu__link"><a href="#works">WORKS</a></li>
                 <li class="nav-menu__link"><a href="#about">ABOUT</a></li>
                 <li class="nav-menu__link"><a href="#contact">CONTACT</a></li>
-                <li class="nav-menu__link"><a href="https://x.com/masakazu_h2336"><i class="fa-brands fa-x-twitter"></i></a></li>
-            </ul>                                            
+                <li class="nav-menu__link"><a href="https://x.com/masakazu_h2336"><i
+                            class="fa-brands fa-x-twitter"></i></a></li>
+            </ul>
         </nav>
         <div class="ham">
             <div class="ham-icon">
@@ -106,43 +117,101 @@
     </header>
 
     <!-- ヒーローエリア -->
-    <div class="hero">
-        <div class="hero-container">
-            <h1>Welcome to My <br class="pc-none">Portfolio</h1>
+    <section class="hero">
+        <!-- 背景 PC-->
+        <div class="hero__background sp-none">
+            <img src="img/6.png" alt="" />
         </div>
-    </div>
-    
+        <!-- 背景 SP-->
+        <div class="hero__background pc-none">
+            <img src="img/sp-hero-bgImage2.png" alt="" />
+        </div>
+
+
+        <!-- 中身 -->
+        <div class="hero__inner">
+            <!-- 左：テキスト -->
+            <div class="hero__content">
+                <h1 class="hero__title">まさかず<br class="pc-none">デザイン製作所</h1>
+                <p class="hero__catch">人を集めるお手伝い。</p>
+            </div>
+
+            <!-- 右：制作物 -->
+            <div class="hero__decorations">
+                <div class="hero__decoration"></div>
+                <div class="hero__decoration"></div>
+                <div class="hero__decoration"></div>
+                <div class="hero__decoration"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONCEPT -->
     <section id="concept" class="section concept">
         <div class="concept-container container">
             <div class="concept-first">
                 <div class="section-head">
-                    <h2 class="section-head__en">CONCEPT</h2>
+                    <h2 class="section-head__en">コンセプト</h2>
                     <h2 class="section-head__ja">ただきれいなサイトを作るだけでは、誰も見てくれません。</h2>
                     <!-- <p class="concept-text">丁寧なヒアリングをもとに、目的に合わせてデザインされたサイトを構築しています。<br>SNS運用も組み合わせたトータルサポートで成果を目指します。</p> -->
                 </div>
             </div>
-            <h3 class="concept-title">〇カスタマージャーニーマップ</h3>
-            <div class="concept-second">                
-                <div class="concept-cjm">
-                    <img src="img/img01.png" alt="カスタマージャーニーマップ" class="concept-cjm__img">
+            <div class="concept-sheets">
+                <div class="concept-sheet">
+                    <h3 class="flow__title">〇 導線設計</h3>
+                    <div class="flow__inner">
+    
+                        <div class="flow__content">
+                            <div class="flow__sources">
+                                <div class="flow__source flow__source--sns"></div>
+                                <div class="flow__source flow__source--flyer"></div>
+                            </div>
+    
+                            <div class="flow__arrow">
+                                <i class="fa-solid fa-caret-right sp-none"></i>
+                            </div>
+                            <div class="flow__arrow">
+                                <i class="fa-solid fa-caret-down pc-none"></i>
+                            </div>
+    
+                            <div class="flow__destination"></div>
+    
+                        </div>
+                        <div class="flow-text-container">
+                            <p class="flow__text">
+                                ホームページやLPの作成だけでなく、<br />
+                                SNSやチラシからの<br />
+                                導線設計も行っています。
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="concept-cjm-text">
-                    <p class="concept-text">丁寧なヒアリングを行い、<br>カスタマージャーニーマップを作成。<br>それに基づいてサイトを構築していきます。</p>
+                <div class="concept-sheet">
+                    <h3 class="concept-title">〇カスタマージャーニーマップ</h3>
+                    <div class="concept-second">
+                        <div class="concept-cjm">
+                            <img src="img/img01.png" alt="カスタマージャーニーマップ" class="concept-cjm__img">
+                        </div>
+                        <div class="concept-cjm-text">
+                            <p class="concept-text">丁寧なヒアリングを行い、<br>カスタマージャーニーマップを作成。<br>それに基づいてサイトを構築していきます。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="concept-sheet">
+                <h3 class="concept-title">〇分析ツール</h3>
+                    <div class="concept-third">
+                        <div class="concept-media">
+                            <img src="img/img05.png" alt="分析ツール" class="concept-media__img">
+                        </div>
+                        <div class="concept-media-text">
+                            <p class="concept-text">
+                                SNS運用で認知を広げ、サイトへの流入を促進。<br>
+                                分析ツールを用いて改善・運用を行います。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h3 class="concept-title">〇分析ツール</h3>
-            <div class="concept-third">
-                <div class="concept-media">
-                    <!-- <img src="img/img04.png" alt="ショート動画編集" class="concept-media__img"> -->
-                    <img src="img/img05.png" alt="分析ツール" class="concept-media__img">
-                </div>
-                <p class="concept-text">
-                    SNS運用で認知を広げ、サイトへの流入を促進。<br>
-                    分析ツールを用いて改善・運用を行います。
-                </p>
-            </div>
-
         </div>
     </section>
 
@@ -153,30 +222,78 @@
                 <h2 class="section-head__en">WORKS</h2>
             </div>
             <!-- WEBサイト -->
-            <h3 class="works-title title">WEBサイト</h3>
+            <div class="title-wrap">
+                <h3 class="works-title title">WEBサイト</h3>
+                <div class="title-line"></div>
+            </div>
             <div class="works-items">
-                <!-- トレーニング整体院ヘルスプロ -->
+                <!-- トレーニング整体院ヘルスプロ HP -->
                 <div class="works-item">
                     <a href="https://healthp.net/">
                         <div class="thumbnail-flame">
                             <img src="img/img02.png" alt="サムネイル画像" class="works-item__img">
                         </div>
-                        <p class="works-item__title">トレーニング整体院ヘルスプロ</p>
                     </a>
-                </div> 
+                    <p class="works-item__title">整体院ホームページ</p>
+                    <p class="works-item__type">ワードプレス</p>
+                </div>
+                <!-- トレーニング整体院ヘルスプロ LP -->
+                <div class="works-item">
+                    <a href="https://masakazu-h.main.jp/healthprolp/">
+                        <div class="thumbnail-flame">
+                            <img src="img/healthPro-lp.png" alt="サムネイル画像" class="works-item__img">
+                        </div>
+                    </a>
+                    <p class="works-item__title">整体院　LP</p>
+                    <p class="works-item__type">ワードプレス</p>
+                </div>
                 <!-- WOODEN STUDIO -->
                 <div class="works-item">
                     <a href="https://tk352228.github.io/woodenstudio/">
                         <div class="thumbnail-flame">
                             <img src="img/img03.png" alt="サムネイル画像" class="works-item__img">
                         </div>
-                        <p class="works-item__title">WOODEN STUDIO</p>
                     </a>
-                </div>             
+                    <p class="works-item__title">WOODEN STUDIO</p>
+                    <p class="works-item__type">コーディング</p>
+                </div>
+                <!-- WOODEN STUDIO 2 -->
+                <div class="works-item">
+                    <a href="https://tk352228.github.io/WOODENSTUDIO2026/">
+                        <div class="thumbnail-flame">
+                            <img src="img/WOODENSTUDIO2.png" alt="サムネイル画像" class="works-item__img">
+                        </div>
+                    </a>
+                    <p class="works-item__title">WOODEN STUDIO 2</p>
+                    <p class="works-item__type">コーディング</p>
+                </div>
+                <!-- SUNASHOP -->
+                <div class="works-item">
+                    <a href="https://tk352228.github.io/sunashop/">
+                        <div class="thumbnail-flame">
+                            <img src="img/SUNASHOP.png" alt="サムネイル画像" class="works-item__img">
+                        </div>
+                    </a>
+                    <p class="works-item__title">SUNASHOP</p>
+                    <p class="works-item__type">コーディング</p>
+                </div>
+                <!-- SUNASHOP -->
+                <div class="works-item">
+                    <a href="https://preview.studio.site/live/M3aALAKkqe">
+                        <div class="thumbnail-flame">
+                            <img src="img/1223cafe.png" alt="サムネイル画像" class="works-item__img">
+                        </div>
+                    </a>
+                    <p class="works-item__title">cafe</p>
+                    <p class="works-item__type">Studio</p>
+                </div>
             </div>
 
             <!-- ショート動画 -->
-            <h3 class="works-title title">ショート動画</h3>
+            <div class="title-wrap">
+                <h3 class="works-title title">ショート動画</h3>
+                <div class="title-line"></div>
+            </div>
             <div class="works-shortVideos">
                 <div class="works-shortVideo">
                     <div class="video-wrapper">
@@ -188,7 +305,7 @@
                         </iframe>
                     </div>
                 </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>                
+                <script src="https://player.vimeo.com/api/player.js"></script>
                 <!-- 二つ目 -->
                 <div class="works-shortVideo">
                     <div class="video-wrapper">
@@ -225,41 +342,68 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- SNS運用サポート -->
-            <h3 class="works-title title">SNS運用サポート </h3>
+            <div class="title-wrap">
+                <h3 class="works-title title">SNS運用サポート </h3>
+                <div class="title-line"></div>
+            </div>
             <div class="sns-supports">
-                <div class="sns-support">             
+                <div class="sns-support">
                     <div class="thumbnail-flame">
                         <img src="./img/img06.jpg" alt="TikTokアカウント画像" class="sns-support__img">
                     </div>
                     <p class="sns-support__title">TikTok</p>
                     <p class="sns-support__text">ショート動画制作だけでなく<br class="sp-none">運用のサポートも行っています。</p>
-                    <p class="sns-support__linkText">アカウントは<a href="https://www.tiktok.com/@healthpro.p " class="sns-support__link">こちら</a>です。</p>                         
+                    <p class="sns-support__linkText">アカウントは<a href="https://www.tiktok.com/@healthpro.p "
+                            class="sns-support__link">こちら</a>です。</p>
                     <a href="https://www.tiktok.com/@healthpro.p">
                         <button class="sns-support__btn">トレーニング整体院</button>
                     </a>
-                    
+
                 </div>
                 <div class="sns-support">
                     <div class="thumbnail-flame">
                         <img src="./img/img07.png" alt="Xポスト画像" class="sns-support__img">
                     </div>
                     <p class="sns-support__title">X(旧Twitter)</p>
-                    <p class="sns-support__text">オンラインゲーム仲間の募集を<br class="sp-none">サポートしました。<br>結果のnoteが<a href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="sns-support__link">こちら</a>です。</p>
+                    <p class="sns-support__text">オンラインゲーム仲間の募集を<br class="sp-none">サポートしました。<br>結果のnoteが<a
+                            href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="sns-support__link">こちら</a>です。
+                    </p>
                     <a href="https://note.com/takuto_sunabaco/n/ndc6527815313" class="note-qr">
-                        <img src="./img/img08.png" alt="NoteのQRコード" >
+                        <img src="./img/img08.png" alt="NoteのQRコード">
                     </a>
-                </div>                    
+                </div>
             </div>
 
+            <!-- チラシ -->
+            <div class="title-wrap">
+                <h3 class="works-title title">チラシ </h3>
+                <div class="title-line"></div>
+            </div>
+            <div class="flyers">
+                <div class="flyer">
+                    <img src="img/flyer01healthpro.png" alt="ちらし画像" class="flyer__img">
+                </div>
+                <div class="flyer">
+                    <img src="img/flyer02healthpro.png" alt="ちらし画像" class="flyer__img">
+                </div>
+                <div class="flyer">
+                    <img src="img/flyer03masakazuCafe.png" alt="ちらし画像" class="flyer__img">
+                </div>
+            </div>
+
+            <!-- 口コミシート -->
+            <div class="title-wrap">
+                <h3 class="works-title title">お客様の声シート </h3>
+                <div class="title-line"></div>
+            </div>
+            <div class="reviews">
+                <div class="review">
+                    <img src="img/customer-seet.png" alt="ちらし画像" class="review__img">
+                </div>                
+            </div>
         </div>
-
-            
-
-
-
-            
     </section>
 
     <!-- ABOUT -->
@@ -271,7 +415,7 @@
             <div class="service-headings">
                 <div class="service-heading">
                     <h3 class="service-heading__title">事業内容</h3>
-                    <p class="service-heading__text">WEBサイト制作・運用<br>WEBデザイン<br>動画制作</p>
+                    <p class="service-heading__text">WEBサイト制作・運用<br>WEBデザイン<br>ショート動画制作<br>SNS運用サポート<br>ちらしデザイン</p>
                     <h3 class="location">所在地</h3>
                     <p class="location-text">滋賀県</p>
                 </div>
@@ -282,17 +426,21 @@
                         <li class="service-tool">HTML</li>
                         <li class="service-tool">CSS</li>
                         <li class="service-tool">JavaScript</li>
+                        <li class="service-tool">Google Apps Script</li>
                         <li class="service-tool">WordPress</li>
+                        <li class="service-tool">Studio</li>
                         <li class="service-tool">Google アナリティクス</li>
                         <li class="service-tool">Microsoft Clarity</li>
                     </ul>
                 </div>
                 <div class="service-heading">
-                    <h3 class="service-heading__title">WEBデザイン<br>動画制作</h3>
-                    <p class="service-heading__text">WEBデザインや動画作成を行っています。<br>以下のツールを使用しています。</p>
+                    <h3 class="service-heading__title">WEB・ちらしデザイン<br>動画制作</h3>
+                    <p class="service-heading__text">WEBやチラシのデザイン、動画制作を行っています。<br>以下のツールを使用しています。</p>
                     <ul class="service-tools">
                         <li class="service-tool">Figma</li>
+                        <li class="service-tool">CANVA</li>
                         <li class="service-tool">CapCut</li>
+                        <li class="service-tool">Adobe Premiere Pro</li>
                     </ul>
                 </div>
             </div>
@@ -307,11 +455,11 @@
                 <h2 class="section-head__en">CONTACT</h2>
             </div>
             <p class="contact-text">ご相談やお見積りは無料ですので、<br class="pc-none">お気軽にお問い合わせください。<br>24時間以内にご返信いたします。</p>
-            
+
 
             <!-- スプレッドシート→LINE通知 -->
             <div class="contact-form">
-            <!-- ① form に id="contactForm" を追加 -->
+                <!-- ① form に id="contactForm" を追加 -->
                 <form id="contactForm">
                     <input type="text" name="name" placeholder="お名前" required>
                     <input type="email" name="email" placeholder="メールアドレス" required>
@@ -337,8 +485,10 @@
 
     <!-- <script src="js/script.js"></script> -->
     <script src="js/modal.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/cjm.js"></script>
     <script src="js/contact.js" defer></script>
 
 </body>
+
 </html>

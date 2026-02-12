@@ -7,48 +7,181 @@
 @use 'cjm' as *;
 
 
-// ヒーローエリアのスタイル
+/* =========================
+Hero
+========================= */
+
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: $textColor2;
+    position: relative;
     width: 100%;
-    height: 100dvh;
-    @include mq(sp){
-        .pc-none{
-            display: none;
-            @include mq(sp){
-                display: block;
-            }
+    height: 100svh;
+    min-height: min(810px, 100svh);
+    overflow: hidden;
+
+  /* 背景（全面フィット） */
+    &__background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   // FigmaのFillと同じ
+        object-position: center;
+        opacity: 0.5;
+    }
+    }
+
+  /* 中身（左右レイアウト） */
+    &__inner {
+        position: relative;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 136px 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include mq(sp){
+            // flex-direction: column;
+            // justify-content: center;
+            display: block;
+            height: auto; 
+        }
+    }
+
+    /* 左：テキスト */
+    &__content {
+        width: 50%;
+        transform: translateY(-50px);
+
+        @include mq(sp){
+            width: 100%;
+            transform: none;
+        }
+    }
+
+    &__title {
+        font-size: 48px;
+        font-weight: 500;
+        color: #333333;
+        margin-bottom: 32px;
+        font-family: $serif;
+        font-weight: 500;
+        text-shadow:
+        -4px -4px 0 #FFFFFF,
+        4px -4px 0 #FFFFFF,
+        -4px  4px 0 #FFFFFF,
+        4px  4px 0 #FFFFFF;
+        @include mq(sp){
+            font-size: 36px;
+            text-align: center;
+        }
+    }
+
+    &__catch {
+        padding-left: 6px;
+        margin-bottom: 64px;
+        font-size: 32px;
+        font-weight: 400;
+        color: #000;
+        font-family: $serif;
+        text-shadow:
+        -2px -2px 0 #FFFFFF,
+        2px -2px 0 #FFFFFF,
+        -2px  2px 0 #FFFFFF,
+        2px  2px 0 #FFFFFF;
+        @include mq(sp){
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+
+    /* 右：制作物エリア */
+    &__decorations {
+        position: relative;
+        width: min(90vw, 500px);     // 画面に合わせて縮む
+        aspect-ratio: 500 / 381;     // 高さも比率固定
+        margin: 0 auto;              // 中央
+
+        @include mq(sp){
+        // transform: scale(0.7);
+        }
+    }
+
+  /* 共通装飾 */
+    &__decoration {
+        position: absolute;
+        border: 4px solid #333;
+        background: no-repeat center / cover;
+        // GSAP用
+        opacity: 0;
+        transform: translateY(60px) rotate(0deg);
+
+        &:nth-child(1) {
+            width: 52%;           // 260/500
+            height: 38.06%;       // 145/381
+            top: 5.25%;           // 20/381
+            right: 0%;
+            background-image: url("../img/WOODENSTUDIO2.png");
+            transform: rotate(6deg);
+        }
+
+        &:nth-child(2) {
+            width: 58.4%;         // 292/500
+            height: 44.88%;       // 171/381
+            top: 8.66%;           // 33/381
+            left: 0%;
+            background-image: url("../img/img02.png");
+        }
+
+        &:nth-child(3) {
+            width: 28.6%;         // 143/500
+            height: 52.23%;       // 199/381
+            bottom: 5.25%;        // 20/381
+            left: 10%;            // 50/500
+            background-image: url("../img/img04.png");
+            transform: rotate(-9deg);
+        }
+
+        &:nth-child(4) {
+            width: 28.6%;
+            height: 52.23%;
+            bottom: 5.25%;
+            right: 24%;           // 120/500
+            background-image: url("../img/flyer01healthpro.png");
+            transform: rotate(-9deg);
         }
     }
 }
 
-
-
-.hero h1 {
-    font-size: 10rem;
-    @include mq(sp){
-        font-size: 40px;
-    }
-}
 
 // CONCEPTのスタイル
 .concept{
     background-color: $baseColor2;
 
     &-title{
-        font-size: 18px;
+        font-size: 20px;
         color: $textColor1;
-        row-gap: 8px;
+        padding: 16px 0 8px 24px;
+
+        @include mq(sp){
+            padding: 16px 0 16px 24px;
+        }
     }
     &-container{
         display: flex;
         flex-direction: column;
-        // row-gap: 80px;
         
+        .concept-sheets{
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+        }
+
         .concept-first{
             .section-head__ja{
                 font-size: 24px;
@@ -59,38 +192,136 @@
                 }
             }
         }
+
+        .concept-sheet{
+            width: 100%;
+            background-color: #fff7e1;
+            border: 1px solid #000;
+            border-radius: 3px;
+        }
+
+        .flow {
+            &__title {
+                font-size: 20px;
+                font-weight: 400;
+                color: #0526ff;
+                margin-top: 48px;
+                margin-bottom: 16px;
+                padding-left: 24px;
+
+                @include mq(sp){
+                    margin: 16px 0;
+                }
+            }
+
+            &__inner {
+                display: flex;
+                align-items: center;
+                padding: 0 24px 64px 24px;
+                gap: 24px;
+                
+                @include mq(sp){
+                    display: block;
+                    padding: 0 24px 16px 24px;
+                }
+            }
+
+            &__content {
+                display: flex;
+                align-items: center;
+                column-gap: 16px;
+                flex: 1;
+
+                @include mq(sp){
+                    display: block;
+                    padding-bottom: 16px;
+                }
+            }
+
+            &__sources {
+                display: flex;
+                gap: 8px;
+                flex: 1;
+
+                @include mq(sp){
+                    gap: 16px;
+                }
+            }
+
+            &__source {
+                flex: 1;
+                aspect-ratio: 107 / 152;
+                background: no-repeat center / cover;
+
+                &--sns {
+                background-image: url("../img/img06.jpg");
+                }
+
+                &--flyer {
+                background-image: url("../img/flyer01healthpro.png");
+                }
+            }
+
+            &__arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                
+                i {
+                    font-size: 48px;
+                    color: #343434;
+                    
+                    @include mq(sp){
+                        margin: 8px 0;
+                    }
+                }
+            }
+
+            &__destination {
+                flex: 1;
+                aspect-ratio: 169 / 96;
+                background: url("../img/img02.png") no-repeat center / cover;
+                border: 1px solid #000;
+            }
+
+            &-text-container {
+                display: flex;
+                flex: 1;
+            }
+
+            &__text {
+                width: 334px;
+                font-size: 18px;
+                line-height: 1.6;
+
+                @include mq(sp){
+                    font-size: 16px;
+                }
+            }
+        }
         .concept-second{
             display: flex;
-            column-gap: 16px;
-            margin-bottom: 40px;
+            column-gap: 24px;
+            padding: 0 24px 16px 24px;
+            
             @include mq(sp){
                 flex-direction: column;
-                row-gap: 0px;
-                margin-bottom: 24px;
+                row-gap: 16px;
             }
             .concept-cjm {
-                display: flex;
-                width: calc((100% - 16px) / 2);
-                @include mq(sp){
-                    width: 100%;
-                    flex-direction: column;   // ←ここで縦積みに
-                    row-gap: 24px;            // ←これで上下に隙間を作るのもあり
-                }
+                flex: 1;
+
                 &__img{
                     width: 100%;               
                     height: auto;
-                    margin-bottom: 32px;
-                    @include mq(sp){
-                        margin-bottom: 0;
-                    }
                 }
             }
             .concept-cjm-text{
                 display: flex;
-                justify-content: flex-start;
                 align-items: center;
-                
-                width: calc((100% - 16px) / 2);
+                flex: 1;
+
                 @include mq(sp){
                     display: block;
                     width: 100%;
@@ -101,13 +332,14 @@
         .concept-third{
             display: flex;
             align-items: center; /* 上下中央に配置 */
-            column-gap: 16px;
+            padding: 0 24px 16px 24px;
+            column-gap: 24px;
             @include mq(sp){
                 flex-direction: column;
-                row-gap: 8px;
+                row-gap: 16px;
             }
             .concept-media{
-                width: calc((100% - 16px) / 2);
+                flex: 1;
                 border: 1px solid $textColor2;
                 @include mq(sp){
                     width: 100%;
@@ -116,6 +348,17 @@
                 .concept-media__img {
                     width: 100%;
                     height: auto; /* アスペクト比を保つ */
+                }
+            }
+            .concept-media-text{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;                
+                flex: 1;
+
+                @include mq(sp){
+                    display: block;
+                    width: 100%;               
                 }
             }
         }
@@ -137,33 +380,25 @@
     }
     // コンテンツを横に2つ並べて配置。間は16px
     &-items{
-        padding-bottom: 80px;
         display: flex;
         flex-wrap: wrap;
-        column-gap: 16px;
+        column-gap: 32px;
+        padding-bottom: 64px;
         @include mq(sp){
             flex-direction: column;
-            row-gap: 64px;
+            row-gap: 0px;
+            padding-bottom: 0;
         }
         .works-item{
-            width: calc((100% - 16px) / 2);
+            width: calc((100% - 32px) / 2);
             @include mq(sp){
                 width: 100%;
             }
 
-            &__img{
-                width: 100%;               
-                height: auto;
-                
-            }
-
-            &__title{
-                text-align: center;
-            }
             // サムネイルの外枠表示
             .thumbnail-flame {
-                margin-bottom: 16px;
-                border: 1px solid $baseColor3;
+                margin-bottom: 8px;
+                border: 5px solid $baseColor3;
                 overflow: hidden;                  // ← 追加: 枠からはみ出さない
             // 画像の変形をスムーズに
                 .works-item__img {
@@ -177,6 +412,23 @@
                     transform: scale(1.05);
                 }
             }        
+
+            &__img{
+                width: 100%;               
+                height: auto;
+                
+            }
+
+            &__title{
+                text-align: center;
+                margin-bottom: 0px;
+            }
+            
+            &__type{
+                text-align: center;
+                font-size: 14px;
+                margin-bottom: 56px;
+            }
         }
     }
 }
@@ -187,12 +439,13 @@
     gap: 40px;               /* 子要素間の余白 */
     justify-content: space-between;
     flex-wrap: nowrap;
-    padding-bottom: 80px;
+    padding-bottom: 120px;
+
     @include mq(sp){
         flex-direction: column;
         row-gap: 32px;
         align-items: center;
-        
+        padding-bottom: 80px;
     }
 }
 
@@ -255,15 +508,18 @@
 // SNS運用サポート
 .sns-supports{
     display: flex;
-    column-gap: 40px;
+    column-gap: 48px;
+    padding-bottom: 120px;
+
     @include mq(sp){
         flex-direction: column;
         align-items: center;
         row-gap: 32px;
+        padding-bottom: 80px;
     }
     
     .sns-support{
-        width: calc((100% - 80px) / 3);
+        width: calc((100% - 96px) / 3);
         border-radius: 10px;
         border: 1px solid #000;  /* 幅1px・実線・黒 */
         background-color: $baseColor2;
@@ -404,6 +660,54 @@
     }
 }
 
+// チラシ
+.flyers{
+    display: flex;
+    column-gap: 48px;
+    padding-bottom: 120px;
+    @include mq(sp){
+        flex-direction: column;
+        align-items: center;
+        row-gap: 32px;
+        padding-bottom: 80px;
+    }
+    
+    .flyer{
+        width: calc((100% - 96px) / 3);
+        border: 1px solid #000;  /* 幅1px・実線・黒 */
+        @include mq(sp){
+            width: 255px;
+        }
+        &__img{
+            width: 100%;               
+            height: auto;            
+        }
+    }
+}
+
+// お客様の声シート
+.reviews{
+    display: flex;
+    column-gap: 48px;
+    // padding-bottom: 120px;
+    @include mq(sp){
+        flex-direction: column;
+        align-items: center;
+        row-gap: 32px;
+    }
+    
+    .review{
+        width: calc((100% - 96px) / 3);
+        border: 1px solid #000;  /* 幅1px・実線・黒 */
+        @include mq(sp){
+            width: 255px;
+        }
+        &__img{
+            width: 100%;               
+            height: auto;            
+        }
+    }
+}
 
 // ABOUT
 .about{

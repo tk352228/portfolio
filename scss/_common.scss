@@ -18,12 +18,25 @@ h3{
     }
 }
 
-.title{
-    color: $textColor1;
-}
+.title-wrap{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    
+    .title{
+        color: $textColor1;
+        white-space: nowrap;   // ← 改行させない
+        margin-right: 16px;    
+    }
 
-.works-title{
-    padding-bottom: 32px;
+    .title-line{
+        height: 2px;
+        flex: 1;
+        background-color: $textColor1;
+    }
+
 }
 
 p {
@@ -39,11 +52,11 @@ p {
     padding-top: 96px;
     padding-bottom: 184px;
     @include mq(sp){
-        padding-top: 96px;
-        padding-bottom: 96px;
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
     &-head__en{
-        font-size: 56px;
+        font-size: 48px;
         @include mq(sp){
             font-size: 32px;
         }
@@ -53,6 +66,11 @@ p {
 .section-head__en{
     padding-bottom: 64px;
     color: $textColor1;
+    font-family: $serif;
+
+    @include mq(sp){
+        padding-bottom: 40px;
+    }
 }
 
 .container{

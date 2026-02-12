@@ -1,14 +1,42 @@
-// // GSAP アニメーション設定
-// window.addEventListener('DOMContentLoaded', () => {
-//     const logoContainer = document.querySelector('.logo-container');
-//     const heroArea = document.querySelector('.hero-area');
+// ヒーローエリアのGSAPアニメーション
 
-//     // ロゴを1秒間表示してフェードアウト
-//     gsap.timeline()
-//         .to(logoContainer, { opacity: 1, duration: 1 }) // ロゴが表示される
-//         .to(logoContainer, { opacity: 0, duration: 0.5, delay: 1 }) // ロゴがフェードアウト
-//         .set(logoContainer, { display: 'none' }) // ロゴコンテナを非表示
-//         .set(heroArea, { display: 'block' }) // ヒーローエリアを表示
-//         .from(heroArea, { opacity: 0, duration: 1 }); // ヒーローエリアをフェードイン
+// テキストを1文字ずつ分解
+const catchText = document.querySelector(".hero__catch");
+const text = catchText.textContent;
 
-// });
+catchText.innerHTML = text
+    .split("")
+    .map(char => `<span class="char">${char}</span>`)
+    .join("");
+
+const tl = gsap.timeline({ delay: 0.5 });
+
+// テキストを一文字ずつ表示
+tl.from(".char", {
+        opacity: 0,
+        y: 20,
+        duration: 0.05,
+        stagger: 0.08,
+        ease: "power2.out"
+    }, 
+    "+=0.3"
+);
+
+// 画像を浮き上がらせる
+tl.fromTo(".hero__decoration",
+    {
+        y: 0,
+        opacity: 0,
+        scale: 0.9
+    },
+    {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 3.2,
+        ease: "power3.inOut",
+    },
+    ">-0.3"
+);
+
+
